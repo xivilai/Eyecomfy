@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BrightnessSlider"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="60" Width="350"
+        WindowStartupLocation="Manual"
+        WindowStyle="None" AllowsTransparency="True"
+        Background="#FF35333E" Foreground="White">
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="280"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Slider x:Name="slider" Grid.Column="0" Margin="15 0 0 0"
+                VerticalAlignment="Center" Maximum="100" LargeChange="5" SmallChange="1" />
+        <Label x:Name="sliderValue" Grid.Column="1"></Label>
     </Grid>
 </Window>
