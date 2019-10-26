@@ -8,15 +8,18 @@
         Title="MainWindow" Height="60" Width="350"
         WindowStartupLocation="Manual"
         WindowStyle="None" AllowsTransparency="True"
-        Background="#FF35333E" Foreground="White">
+        Background="#FF1B1B1B" Foreground="White">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="280"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="250"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Slider x:Name="slider" Grid.Column="0" Margin="15 0 0 0"
+        <Image x:Name="brightnessIcon" Source="brightness.ico" Grid.Column="0"
+               Width="28px" Height="28" OpacityMask="White"/>
+        <Slider x:Name="slider" Grid.Column="1"
                 VerticalAlignment="Center" Maximum="100" LargeChange="5" SmallChange="1" />
-        <Label x:Name="sliderValueLabel" Grid.Column="1" Foreground="White" FontSize="25px"
+        <Label x:Name="sliderValueLabel" Grid.Column="2" Foreground="White" FontSize="25px"
                HorizontalAlignment="Center" VerticalAlignment="Center"
                Content="{Binding Path=Value, ElementName=slider, StringFormat={}{0:#}}">
         </Label>
