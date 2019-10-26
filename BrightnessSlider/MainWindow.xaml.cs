@@ -33,7 +33,9 @@ namespace BrightnessSlider {
 
             //CreateNotifyIConContexMenu();
 
-            //Brightness = Brightness; // set initial brightness
+            //set initial brightness
+            slider.Value = (double)Brightness;
+
             slider.ValueChanged += Slider_ValueChanged;
         }
 
@@ -72,8 +74,5 @@ namespace BrightnessSlider {
                 }
             }
         }
-
-
-
     }
 }

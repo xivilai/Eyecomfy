@@ -16,6 +16,9 @@
         </Grid.ColumnDefinitions>
         <Slider x:Name="slider" Grid.Column="0" Margin="15 0 0 0"
                 VerticalAlignment="Center" Maximum="100" LargeChange="5" SmallChange="1" />
-        <Label x:Name="sliderValue" Grid.Column="1"></Label>
+        <Label x:Name="sliderValueLabel" Grid.Column="1" Foreground="White" FontSize="25px"
+               HorizontalAlignment="Center" VerticalAlignment="Center"
+               Content="{Binding Path=Value, ElementName=slider, StringFormat={}{0:#}}">
+        </Label>
     </Grid>
 </Window>
