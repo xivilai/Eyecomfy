@@ -44,11 +44,23 @@ namespace BrightnessSlider {
             notifyIcon.MouseClick += NotifyIcon_MouseClick;
             CreateNotifyIConContexMenu();
             notifyIcon.ShowBalloonTip(2000);
-
-            //set initial brightness
-            slider.Value = (double)Brightness;
-
+            
+            slider.Value = (double)Brightness; //set initial brightness
             slider.ValueChanged += Slider_ValueChanged;
+
+            Deactivated += MainWindow_Deactivated;
+        }
+
+        private void MainWindow_Deactivated(object sender, EventArgs e)
+        {
+            var thread = new System.Threading.Thread(p => {
+                Action action = () => {
+                    Visibility = Visibility.Collapsed;
+                };
+                System.Threading.Thread.Sleep(100);
+                this.Dispatcher.Invoke(action);
+            });
+            thread.Start();
         }
 
         private RegistryKey RegistryKey {
