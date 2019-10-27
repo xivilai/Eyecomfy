@@ -51,6 +51,36 @@ namespace BrightnessSlider {
             slider.ValueChanged += Slider_ValueChanged;
         }
 
+        private RegistryKey RegistryKey {
+            get {
+                return Registry.CurrentUser.OpenSubKey
+                ("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            }
+        }
+
+        public bool RunAtStartup {
+            get {
+                string productName =
+                    (string)RegistryKey.GetValue(System.Windows.Forms.Application.ProductName);
+
+                if (productName.Equals(System.Windows.Forms.Application.ExecutablePath)) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+            set {
+                if (value == true) {
+                    RegistryKey.SetValue(System.Windows.Forms.Application.ProductName,
+                        System.Windows.Forms.Application.ExecutablePath);
+                }
+                else {
+                    RegistryKey.DeleteValue(System.Windows.Forms.Application.ProductName, false);
+                }
+            }
+        }
+
         private void NotifyIcon_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left) {
@@ -75,6 +105,11 @@ namespace BrightnessSlider {
 
             menu.MenuItems.AddRange(new MenuItem[] {
                 new MenuItem("Exit", (_,__) => { Application.Current.Shutdown(); }),
+                new MenuItem("Run At Startup", (sender, _) => {
+                    MenuItem sndr = (MenuItem)sender;
+                    bool run = sndr.Checked ? false : true;
+                    sndr.Checked = run;
+                })
             });
 
             notifyIcon.ContextMenu = menu;
