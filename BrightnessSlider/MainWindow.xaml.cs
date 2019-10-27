@@ -15,9 +15,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Forms;
+using MenuItem = System.Windows.Forms.MenuItem;
+using Application = System.Windows.Application;
 
 namespace BrightnessSlider {
     public partial class MainWindow : Window {
+        private readonly NotifyIcon notifyIcon;
         public MainWindow()
         {
             InitializeComponent();
@@ -29,15 +33,51 @@ namespace BrightnessSlider {
             ShowInTaskbar = false;
             Topmost = true;
 
-            //notifyIcon1.MouseClick += NotifyIcon1_MouseClick;
-            //Deactivate += Form1_Deactivate;
-
-            //CreateNotifyIConContexMenu();
+            notifyIcon = new NotifyIcon() {
+                Icon = new System.Drawing.Icon("brightness.ico"),
+                Visible = true,
+                BalloonTipText = "Hi there, i am your brightness pal!",
+                BalloonTipTitle = "Brightness slider:",
+                BalloonTipIcon = ToolTipIcon.Info,
+            };
+            
+            notifyIcon.MouseClick += NotifyIcon_MouseClick;
+            CreateNotifyIConContexMenu();
+            notifyIcon.ShowBalloonTip(2000);
 
             //set initial brightness
             slider.Value = (double)Brightness;
 
             slider.ValueChanged += Slider_ValueChanged;
+        }
+
+        private void NotifyIcon_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left) {
+                toggleFormVisible();
+            }
+        }
+
+        private void toggleFormVisible()
+        {
+            if (Visibility == Visibility.Visible) {
+                Visibility = Visibility.Collapsed;
+            }
+            else {
+                Visibility = Visibility.Visible;
+                Activate();
+            }
+        }
+
+        private void CreateNotifyIConContexMenu()
+        {
+            var menu = new System.Windows.Forms.ContextMenu();
+
+            menu.MenuItems.AddRange(new MenuItem[] {
+                new MenuItem("Exit", (_,__) => { Application.Current.Shutdown(); }),
+            });
+
+            notifyIcon.ContextMenu = menu;
         }
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
