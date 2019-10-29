@@ -17,8 +17,8 @@
         </Grid.ColumnDefinitions>
         <Image x:Name="brightnessIcon" Source="brightness.ico" Grid.Column="0"
                Width="28px" Height="28" OpacityMask="White"/>
-        <Slider x:Name="slider" Grid.Column="1"
-                VerticalAlignment="Center" Maximum="100" LargeChange="5" SmallChange="1" />
+        <Slider x:Name="slider" Grid.Column="1" IsSnapToTickEnabled="True"
+                VerticalAlignment="Center" Maximum="100" LargeChange="5" SmallChange="1" Value="40" />
         <Label x:Name="sliderValueLabel" Grid.Column="2" Foreground="White" FontSize="25px"
                HorizontalAlignment="Center" VerticalAlignment="Center"
                Content="{Binding Path=Value, ElementName=slider, StringFormat={}{0:#}}">
