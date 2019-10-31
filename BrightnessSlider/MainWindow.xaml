@@ -5,23 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BrightnessSlider"
         mc:Ignorable="d"
-        Title="MainWindow" Height="60" Width="350"
+        Title="MainWindow" Width="350" Height="90"
         WindowStartupLocation="Manual"
         WindowStyle="None" AllowsTransparency="True"
         Background="#FF1B1B1B" Foreground="White">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition Width="250"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Image x:Name="brightnessIcon" Source="brightness.ico" Grid.Column="0"
-               Width="28px" Height="28" OpacityMask="White"/>
-        <Slider x:Name="slider" Grid.Column="1" IsSnapToTickEnabled="True"
-                VerticalAlignment="Center" Maximum="100" LargeChange="5" SmallChange="1" Value="40" />
-        <Label x:Name="sliderValueLabel" Grid.Column="2" Foreground="White" FontSize="25px"
-               HorizontalAlignment="Center" VerticalAlignment="Center"
-               Content="{Binding Path=Value, ElementName=slider, StringFormat={}{0:#}}">
-        </Label>
+    <Grid Margin="2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <WrapPanel Grid.Row="0" HorizontalAlignment="Center">
+            <Image x:Name="brightnessIcon" Source="brightness.ico"
+                   Width="32px" Height="32" Margin="5" />
+            <Label Grid.Column="1" Margin="5">
+                <TextBlock x:Name="sliderValueTextBlock" Foreground="White" VerticalAlignment="Center"
+                   FontSize="32px" Text="{Binding Path=Value, ElementName=slider, StringFormat={}{0:#}}">
+                </TextBlock>
+            </Label>
+        </WrapPanel>
+        <Slider x:Name="slider" Grid.Row="1" IsSnapToTickEnabled="True"
+                    Maximum="100" LargeChange="5" SmallChange="1" Value="40"
+                    Height="18" Margin="30 0 30 0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
