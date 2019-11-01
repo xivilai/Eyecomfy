@@ -5,6 +5,8 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>brightness.ico</ApplicationIcon>
+    <AssemblyName>EyeComfy</AssemblyName>
+    <RootNamespace>Eyecomfy</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

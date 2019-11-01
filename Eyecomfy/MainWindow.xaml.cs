@@ -22,7 +22,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Interop;
 using System.Threading;
 
-namespace BrightnessSlider {
+namespace Eyecomfy {
     public partial class MainWindow : Window {
         [DllImport("user32.dll")]
         private static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
@@ -50,20 +50,18 @@ namespace BrightnessSlider {
 
             notifyIcon = new NotifyIcon() {
                 Icon = new System.Drawing.Icon("brightness.ico"),
-                Visible = true,
-                BalloonTipText = "Hi there, i am your brightness pal!",
-                BalloonTipTitle = "Brightness slider:",
-                BalloonTipIcon = ToolTipIcon.Info,
+                Visible = true
             };
 
             notifyIcon.MouseClick += NotifyIcon_MouseClick;
             CreateNotifyIConContexMenu();
-            notifyIcon.ShowBalloonTip(2000);
 
             slider.Value = (double)Brightness; //set initial brightness
             slider.ValueChanged += Slider_ValueChanged;
 
             Deactivated += MainWindow_Deactivated;
+
+            Show();
         }
         public int Brightness {
             get {
