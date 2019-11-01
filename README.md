@@ -1,6 +1,12 @@
-Application allows you to change monitor brightness
+This application allows you to change monitor brightness
 
 How to use:
-  - Launch the application
-  - If it's not opened, click on "brightness" icon on your taskbar tray.
-  - Use up/down/left/right arrows or mouse click/wheel to control slider position
+ Launch the application
+ If it's not opened, click on "brightness" icon on your taskbar tray.
+
+Keybindings:
+ Alt+PageUp - Increase Brightness
+ Alt+PageDown - Decrease Brightness
+
+ up arrow/right arrow: Increase Brightness
+ down arrow/left arrow: Decrease Brightness
