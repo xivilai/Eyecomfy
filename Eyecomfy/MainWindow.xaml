@@ -15,7 +15,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         
-        <WrapPanel Grid.Row="0" HorizontalAlignment="Center" Width="80px" Height="40px">
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center" Orientation="Horizontal">
             <Image x:Name="brightnessIcon" Source="brightness.ico"
                    Width="32px" Height="32"/>
             <Label>
@@ -23,10 +23,11 @@
                    FontSize="32px" Text="{Binding Path=Value, ElementName=slider, StringFormat={}{0:#}}">
                 </TextBlock>
             </Label>
-        </WrapPanel>
-        <Slider x:Name="slider" Grid.Row="1" IsSnapToTickEnabled="True"
-                    Minimum="-100" Maximum="100" LargeChange="5" Value="40"
-                    Margin="30 0 30 0" VerticalAlignment="Center" TickFrequency="2">
+        </StackPanel>
+        <Slider x:Name="slider" Grid.Row="1" Value="5"
+                    Minimum="-45" Maximum="100" LargeChange="5"
+                    IsSnapToTickEnabled="True" TickFrequency="5" TickPlacement="BottomRight"
+                    Margin="30 0 30 0" VerticalAlignment="Center">
         </Slider>
     </Grid>
 </Window>

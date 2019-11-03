@@ -63,6 +63,7 @@ namespace Eyecomfy {
 
             Deactivated += MainWindow_Deactivated;
 
+            dimScreen.Show();
             Show();
         }
 
@@ -126,8 +127,23 @@ namespace Eyecomfy {
         }
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            Brightness = Convert.ToInt32(slider.Value);
+            bool sliderValueBelowZero = slider.Value < 0;
+
+
+            bool useBrightness = !sliderValueBelowZero;
+            bool useAlpha = sliderValueBelowZero && slider.Value > -50;
+
+            if (useBrightness) {
+                Brightness = Convert.ToInt32(slider.Value);
+            }
+            else if (useAlpha) {
+                double inverse = -slider.Value;
+                byte alpha = (byte)inverse;
+                alpha = (byte)(alpha * 2); // make alpha tick twise as big
+                dimScreen.Background = new SolidColorBrush(Color.FromArgb(alpha, 0, 0, 0));
+            }
         }
+
         private void NotifyIcon_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left) {
