@@ -26,6 +26,7 @@ namespace Eyecomfy {
     public partial class MainWindow : Window {
         [DllImport("user32.dll")]
         private static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
+
         private const int pageUp_ID = 9000;
         private const int pageDown_ID = 9001;
         private const uint MOD_ALT = 0x0001; //ALT
@@ -33,6 +34,7 @@ namespace Eyecomfy {
         private const uint VK_PRIOR = 0x21; // page up virtual key code
         private HwndSource source;
 
+        private readonly DimScreen dimScreen = new DimScreen();
         private readonly NotifyIcon notifyIcon;
         private const int closeDelay = 2000;
         private CancellationTokenSource hideTokenSource = new CancellationTokenSource();
@@ -63,6 +65,7 @@ namespace Eyecomfy {
 
             Show();
         }
+
         public int Brightness {
             get {
                 ManagementScope scope = new ManagementScope("root\\WMI");
@@ -83,13 +86,13 @@ namespace Eyecomfy {
                 ManagementScope scope = new ManagementScope("root\\WMI");
                 SelectQuery query = new SelectQuery("WmiMonitorBrightnessMethods");
                 using (ManagementObjectSearcher searcher = new ManagementObjectSearcher(scope, query)) {
-                    using (ManagementObjectCollection objectCollection = searcher.Get()) {
-                        foreach (ManagementObject mObj in objectCollection) {
-                            mObj.InvokeMethod("WmiSetBrightness",
-                                new Object[] { UInt32.MaxValue, value });
-                            break;
-                        }
-                    }
+                   using (ManagementObjectCollection objectCollection = searcher.Get()) {
+                       foreach (ManagementObject mObj in objectCollection) {
+                           mObj.InvokeMethod("WmiSetBrightness",
+                               new Object[] { UInt32.MaxValue, value });
+                           break;
+                       }
+                   }
                 }
             }
         }

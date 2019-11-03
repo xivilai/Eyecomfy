@@ -11,21 +11,22 @@
         Background="#FF1B1B1B" Foreground="White">
     <Grid Margin="2">
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-
-        <WrapPanel Grid.Row="0" HorizontalAlignment="Center">
+        
+        <WrapPanel Grid.Row="0" HorizontalAlignment="Center" Width="80px" Height="40px">
             <Image x:Name="brightnessIcon" Source="brightness.ico"
-                   Width="32px" Height="32" Margin="5" />
-            <Label Grid.Column="1" Margin="5">
+                   Width="32px" Height="32"/>
+            <Label>
                 <TextBlock x:Name="sliderValueTextBlock" Foreground="White" VerticalAlignment="Center"
                    FontSize="32px" Text="{Binding Path=Value, ElementName=slider, StringFormat={}{0:#}}">
                 </TextBlock>
             </Label>
         </WrapPanel>
         <Slider x:Name="slider" Grid.Row="1" IsSnapToTickEnabled="True"
-                    Maximum="100" LargeChange="5" SmallChange="1" Value="40"
-                    Height="18" Margin="30 0 30 0" VerticalAlignment="Top"/>
+                    Minimum="-100" Maximum="100" LargeChange="5" Value="40"
+                    Margin="30 0 30 0" VerticalAlignment="Center" TickFrequency="2">
+        </Slider>
     </Grid>
 </Window>

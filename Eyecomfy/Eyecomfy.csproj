@@ -7,6 +7,7 @@
     <ApplicationIcon>brightness.ico</ApplicationIcon>
     <AssemblyName>EyeComfy</AssemblyName>
     <RootNamespace>Eyecomfy</RootNamespace>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
