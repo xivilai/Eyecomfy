@@ -2,7 +2,7 @@
 
 ![alt text](https://github.com/xivilai/Eyecomfy/blob/master/Eyecomfy1.png?raw=true)
 
-[Download v1.0](https://github.com/xivilai/Eyecomfy/releases/download/v1.0/Eyecomfy.7z)
+[Download v1.1](https://github.com/xivilai/Eyecomfy/releases/tag/v1.1)
 
 ## How to use:
 Launch the application
