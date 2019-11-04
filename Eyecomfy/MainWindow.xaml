@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
         
         <StackPanel Grid.Row="0" HorizontalAlignment="Center" Orientation="Horizontal">
-            <Image x:Name="brightnessIcon" Source="brightness.ico"
+            <Image x:Name="brightnessIcon" Source="pack://application:,,,/images/brightness.ico"
                    Width="32px" Height="32"/>
             <Label>
                 <TextBlock x:Name="sliderValueTextBlock" Foreground="White" VerticalAlignment="Center"
