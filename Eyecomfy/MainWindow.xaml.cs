@@ -17,6 +17,7 @@ namespace Eyecomfy {
         [DllImport("user32.dll")]
         private static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
 
+        // OS wide/Global hotkeys
         private const int pageUp_ID = 9000;
         private const int pageDown_ID = 9001;
         private const uint MOD_ALT = 0x0001; //ALT
