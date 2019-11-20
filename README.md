@@ -17,8 +17,10 @@ Net Framework 4.7.2
 ## Keybindings:
 ### OS/System Wide/Global:
  Alt+PageUp - Increase Brightness
+ 
  Alt+PageDown - Decrease Brightness
 
 ### In app:
  up arrow/right arrow: Increase Brightness
+ 
  down arrow/left arrow: Decrease Brightness
