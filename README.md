@@ -6,15 +6,19 @@
 
 ## Requirements
 Operating system: Windows 7 SP1+, 8.1, 10
+
 Net Framework 4.7.2
 
-## How to use:
-Launch the application
-If it's not opened, click on "brightness" icon on your taskbar tray.
+## Features:
+* Control monitor brightness using mouse or keyboard
 
-### Keybindings:
+* Dim lighting below 0 brightness (Alpha channel)
+
+## Keybindings:
+### OS/System Wide/Global:
  Alt+PageUp - Increase Brightness
  Alt+PageDown - Decrease Brightness
 
+### In app:
  up arrow/right arrow: Increase Brightness
  down arrow/left arrow: Decrease Brightness
