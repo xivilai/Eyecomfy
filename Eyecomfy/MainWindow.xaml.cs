@@ -130,7 +130,7 @@ namespace Eyecomfy {
             else if (useAlpha) {
                 double inverse = -slider.Value;
                 byte alpha = (byte)inverse;
-                alpha = (byte)(alpha * 2); // make alpha tick twise as big
+                alpha = (byte)(alpha * 5); // map tick frequency (5) to alpha(0:255)
                 dimScreen.Background = new SolidColorBrush(Color.FromArgb(alpha, 0, 0, 0));
             }
         }
